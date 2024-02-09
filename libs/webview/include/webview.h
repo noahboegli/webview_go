@@ -2272,7 +2272,10 @@ public:
     }
   }
   void *window() { return (void *)m_window; }
-  void terminate() { PostQuitMessage(0); }
+  void terminate() { 
+    DestroyWindow(m_window);
+    //PostQuitMessage(0); 
+  }
   void dispatch(dispatch_fn_t f) {
     PostThreadMessage(m_main_thread, WM_APP, 0, (LPARAM) new dispatch_fn_t(f));
   }
